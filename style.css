@@ -204,6 +204,50 @@ h2::after {
   flex-wrap: wrap;
   margin-top: 1.5rem;
 }
+
+/* --- Slider i projektkort --- */
+.project-slider{
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background:#0a0a0a;
+  border-bottom: 1px solid #ffffff20;
+  overflow: hidden;
+}
+.slider-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+  filter: brightness(.92);
+  transition: filter .3s ease, transform .4s ease;
+}
+.project-card:hover .slider-img{ filter: brightness(1); }
+
+.slider-nav{
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,.45);
+  color:#fff; border:1px solid #ffffff40;
+  width: 36px; height: 36px; border-radius: 50%;
+  display:grid; place-items:center; cursor:pointer;
+  opacity:.0; transition: opacity .2s ease, background .2s ease;
+}
+.project-card:hover .slider-nav{ opacity:1; }
+.slider-nav:hover{ background: rgba(0,0,0,.65); }
+.slider-nav.prev{ left: 10px; }
+.slider-nav.next{ right: 10px; }
+
+.slider-dots{
+  position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
+  display:flex; gap:8px;
+}
+.slider-dots button{
+  width:8px; height:8px; border-radius:50%;
+  border:0; background:#ffffff40; cursor:pointer; padding:0;
+}
+.slider-dots button.active{ background:#ffffff; }
+
 .tag {
   padding: 0.5rem 1rem;
   background-color: #0a0a0a;

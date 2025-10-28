@@ -91,6 +91,57 @@ document.addEventListener('DOMContentLoaded', () => {
   observeList('.about-text', 0.2);
   observeList('.contact-item', 0.1);
 
+  // --- Bildkällor per projekt ---
+const SLIDES = {
+  greenquest: [
+    'bilder/greenquest1.jpg',
+    'bilder/greenquest2.jpg',
+    'bilder/greenquest3.jpg',
+    'bilder/greenquest4.jpg'
+  ]
+};
+
+// --- Initiera alla sliders ---
+document.querySelectorAll('[data-slider]').forEach(setupSlider);
+
+function setupSlider(sliderEl){
+  const key = sliderEl.getAttribute('data-slider');
+  const imgs = SLIDES[key] || [];
+  const imgEl = sliderEl.querySelector('.slider-img');
+  const prevBtn = sliderEl.querySelector('.prev');
+  const nextBtn = sliderEl.querySelector('.next');
+  const dotsEl = sliderEl.querySelector('.slider-dots');
+
+  if (!imgs.length) return;
+
+  let i = 0;
+  render();
+
+  // knappar
+  prevBtn.addEventListener('click', e => { e.stopPropagation(); i = (i - 1 + imgs.length) % imgs.length; render(); });
+  nextBtn.addEventListener('click', e => { e.stopPropagation(); i = (i + 1) % imgs.length; render(); });
+
+  // autoplay (pausas vid hover)
+  let timer = setInterval(next, 3500);
+  sliderEl.addEventListener('mouseenter', () => clearInterval(timer));
+  sliderEl.addEventListener('mouseleave', () => timer = setInterval(next, 3500));
+
+  function next(){ i = (i + 1) % imgs.length; render(); }
+
+  function render(){
+    imgEl.src = imgs[i];
+    // dots
+    dotsEl.innerHTML = '';
+    imgs.forEach((_, idx) => {
+      const b = document.createElement('button');
+      if (idx === i) b.classList.add('active');
+      b.addEventListener('click', e => { e.stopPropagation(); i = idx; render(); });
+      dotsEl.appendChild(b);
+    });
+  }
+}
+
+
   const contactContent = document.querySelector('.contact-content');
   if (contactContent) {
     contactContent.classList.add('scroll-animation');
