@@ -139,6 +139,37 @@ h2::after {
   margin-bottom: 1rem;
 }
 
+/* === Skill Icons === */
+.skill-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, filter 0.4s ease;
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.15);
+}
+
+/* Glow-effekter per verktyg */
+.skill-card.ai:hover .skill-icon {
+  filter: drop-shadow(0 0 15px #FF9A00) drop-shadow(0 0 40px #FF9A00);
+}
+
+.skill-card.ps:hover .skill-icon {
+  filter: drop-shadow(0 0 15px #31A8FF) drop-shadow(0 0 40px #31A8FF);
+}
+
+.skill-card.figma:hover .skill-icon {
+  filter: drop-shadow(0 0 15px #A259FF) drop-shadow(0 0 40px #A259FF);
+}
+
+.skill-card.vscode:hover .skill-icon {
+  filter: drop-shadow(0 0 15px #007ACC) drop-shadow(0 0 40px #007ACC);
+}
+
+
 .projects-grid { display: grid; gap: 3rem; }
 .project-card {
   background-color: #1a1a1a;
