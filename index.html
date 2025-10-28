@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Min Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -19,100 +22,98 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="hem" class="hero">
         <div class="hero-content">
-                <img src="Bilder/Portfoliobild.jpeg" class="profile-image" alt="profilbild">
+            <img src="Bilder/Portfoliobild.jpeg" class="profile-image" alt="profilbild" />
             <h1>Olle Holmgren</h1>
             <p class="subtitle">Student</p>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="om">
         <h2>About me</h2>
         <div class="about-content">
             <div class="about-text">
-                <h3 style="margin-bottom: 1rem;">Short presentation</h3>
+                <h3 style="margin-bottom:1rem;">Short presentation</h3>
                 <p>
-                    My name is Olle Holmgren and i am studying interactionsdesign at Linnaeus University in Växjö. I like to combine design and technology to create solutions that feel both stylish and user friendly. I am curious, calm and practially minded person who loves to learn new things and take on challenges. I like to see things shape, whether it is about code, layout or a physical project.
+                    My name is Olle Holmgren and i am studying interactionsdesign at Linnaeus University in Växjö. I
+                    like to combine design and technology to create solutions that feel both stylish and user friendly.
+                    I am curious, calm and practially minded person who loves to learn new things and take on
+                    challenges. I like to see things shape, whether it is about code, layout or a physical project.
                 </p>
             </div>
             <div class="about-text">
-                <h3 style="margin-bottom: 1rem;">Objectives</h3>
+                <h3 style="margin-bottom:1rem;">Objectives</h3>
                 <p>
-                My goal is to keep developing my skills within webdevelopment and interaction design, and to create digital experinces that feel meaningful, intuitive and well-crafted. I want to work in the intersection between design and technology, where i can combine creativity with problem solving. In the long run, I aim to work on projects that have a clear user focus and contribute to something positive. I'm motivated by seeing ideas grow into something real and by constatly learning new tools, methods and perspectives.
+                    My goal is to keep developing my skills within webdevelopment and interaction design, and to create
+                    digital experinces that feel meaningful, intuitive and well-crafted. I want to work in the
+                    intersection between design and technology, where i can combine creativity with problem solving. In
+                    the long run, I aim to work on projects that have a clear user focus and contribute to something
+                    positive. I'm motivated by seeing ideas grow into something real and by constatly learning new
+                    tools, methods and perspectives.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills -->
     <section id="kunskaper">
-  <h2>Skills</h2>
-  <div class="skills-grid">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card ai">
+                <img src="Svger/ai-ikon.svg" alt="Adobe Illustrator" class="skill-icon" />
+                <h3>Adobe Illustrator</h3>
+                <p>Vector graphics, logo design, and visual identities.</p>
+            </div>
 
-    <div class="skill-card ai">
-      <img src="Svger/ai-ikon.svg" alt="Adobe Illustrator" class="skill-icon">
-      <h3>Adobe Illustrator</h3>
-      <p>Vector graphics, logo design, and visual identities.</p>
-    </div>
+            <div class="skill-card ps">
+                <img src="Svger/ps.ikon.svg" alt="Adobe Photoshop" class="skill-icon" />
+                <h3>Adobe Photoshop</h3>
+                <p>Photo editing, compositions, and creative retouching.</p>
+            </div>
 
-    <div class="skill-card ps">
-      <img src="Svger/ps.ikon.svg" alt="Adobe Photoshop" class="skill-icon">
-      <h3>Adobe Photoshop</h3>
-      <p>Photo editing, compositions, and creative retouching.</p>
-    </div>
+            <div class="skill-card figma">
+                <img src="Svger/figma-ikon.svg" alt="Figma" class="skill-icon" />
+                <h3>Figma</h3>
+                <p>Prototyping, interface design, and collaboration.</p>
+            </div>
 
-    <div class="skill-card figma">
-      <img src="Svger/figma-ikon.svg" alt="Figma" class="skill-icon">
-      <h3>Figma</h3>
-      <p>Prototyping, interface design, and collaboration.</p>
-    </div>
+            <div class="skill-card vscode">
+                <img src="Svger/vscode-ikon.svg" alt="Visual Studio Code" class="skill-icon" />
+                <h3>Visual Studio Code</h3>
+                <p>Frontend coding, responsive design, and debugging.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="skill-card vscode">
-      <img src="Svger/vscode-ikon.svg" alt="Visual Studio Code" class="skill-icon">
-      <h3>Visual Studio Code</h3>
-      <p>Frontend coding, responsive design, and debugging.</p>
-    </div>
-
-  </div>
-</section>
-
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section id="projekt">
         <h2>My projects</h2>
         <div class="projects-grid">
-            <!-- Projekt 1 -->
+
+            <!-- GreenQuest (statisk banner + modal på klick) -->
             <div class="project-card" data-project="greenquest">
-  <div class="project-slider" data-slider="greenquest">
-    <button class="slider-nav prev" aria-label="Föregående">‹</button>
-    <img class="slider-img" src="bilder/greenquest1.jpg" alt="GreenQuest screenshot">
-    <button class="slider-nav next" aria-label="Nästa">›</button>
-    <div class="slider-dots"></div>
-  </div>
-
-  <div class="project-content">
-    <h3>GreenQuest</h3>
-    <p>Map-based golf trip planner for Småland/Öland with routing, weather and favorites.</p>
-    <div class="project-tags">
-      <span class="tag">HTML</span><span class="tag">CSS</span>
-      <span class="tag">JavaScript</span><span class="tag">Leaflet</span>
-    </div>
-  </div>
-</div>
-
+                <div class="project-image" style="background-image:url('Bilder/Greenquestbanner.png');"></div>
+                <div class="project-content">
+                    <h3>GreenQuest</h3>
+                    <p>Map-based golf trip planner for Småland/Öland with routing, weather and favorites.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Leaflet</span>
+                    </div>
+                </div>
+            </div>
 
             <!-- Projekt 2 -->
             <div class="project-card">
-                <div class="project-image">
-                    Projektbild 2
-                </div>
+                <div class="project-image">Projektbild 2</div>
                 <div class="project-content">
                     <h3>Projekt 2 - Titel</h3>
-                    <p>
-                        Beskriv 
-                    </p>
+                    <p>Beskriv</p>
                     <div class="project-tags">
                         <span class="tag">Teknologi 1</span>
                         <span class="tag">Teknologi 2</span>
@@ -122,14 +123,10 @@
 
             <!-- Projekt 3 -->
             <div class="project-card">
-                <div class="project-image">
-                    Projektbild 3
-                </div>
+                <div class="project-image">Projektbild 3</div>
                 <div class="project-content">
                     <h3>Projekt 3 - Titel</h3>
-                    <p>
-                        Beskriv
-                    </p>
+                    <p>Beskriv</p>
                     <div class="project-tags">
                         <span class="tag">Teknologi 1</span>
                         <span class="tag">Teknologi 2</span>
@@ -139,14 +136,10 @@
 
             <!-- Projekt 4 -->
             <div class="project-card">
-                <div class="project-image">
-                    Projektbild 4
-                </div>
+                <div class="project-image">Projektbild 4</div>
                 <div class="project-content">
                     <h3>Projekt 4 - Titel</h3>
-                    <p>
-                        Beskriv
-                    </p>
+                    <p>Beskriv</p>
                     <div class="project-tags">
                         <span class="tag">Teknologi 1</span>
                         <span class="tag">Teknologi 2</span>
@@ -154,16 +147,12 @@
                 </div>
             </div>
 
-            <!-- Projekt 5 (valfritt) -->
+            <!-- Projekt 5 -->
             <div class="project-card">
-                <div class="project-image">
-                    Projektbild 5
-                </div>
+                <div class="project-image">Projektbild 5</div>
                 <div class="project-content">
                     <h3>Projekt 5 - Titel</h3>
-                    <p>
-                        Beskriv
-                    </p>
+                    <p>Beskriv</p>
                     <div class="project-tags">
                         <span class="tag">Teknologi 1</span>
                         <span class="tag">Teknologi 2</span>
@@ -173,21 +162,21 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="kontakt">
         <h2>Kontakt</h2>
         <div class="contact-content">
-            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Vill du komma i kontakt?</p>
-            <p style="color: #cccccc;">Jag är alltid öppen för nya möjligheter och samarbeten.</p>
-            
+            <p style="font-size:1.2rem;margin-bottom:1rem;">Vill du komma i kontakt?</p>
+            <p style="color:#cccccc;">Jag är alltid öppen för nya möjligheter och samarbeten.</p>
+
             <div class="contact-methods">
                 <div class="contact-item">
                     <div class="icon"></div>
-                    <a href="mailto:din.email@exempel.com">oh222pi@student.lnu.se</a>
+                    <a href="mailto:oh222pi@student.lnu.se">oh222pi@student.lnu.se</a>
                 </div>
                 <div class="contact-item">
                     <div class="icon"></div>
-                    <a href="tel:+46700000000">+46 72 707 38 11</a>
+                    <a href="tel:+46727073811">+46 72 707 38 11</a>
                 </div>
                 <div class="contact-item">
                     <div class="linkedin"><img src="Svger/linkedin.svg" alt=""></div>
@@ -206,6 +195,46 @@
         <p>&copy; 2025 Olle Holmgren. Alla rättigheter förbehållna.</p>
     </footer>
 
+    <!-- GreenQuest popup -->
+    <div id="project-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-dialog">
+            <button class="modal-close" aria-label="Stäng" data-close>&times;</button>
+
+            <div class="modal-header">
+                <h2>GreenQuest</h2>
+                <p class="modal-subtitle">Golf planner tool</p>
+            </div>
+
+            <div class="modal-gallery">
+                <button id="prevImg" aria-label="Föregående" class="modal-nav">‹</button>
+                <img id="modalImg" src="bilder/greenquest1.jpg" alt="GreenQuest image" />
+                <button id="nextImg" aria-label="Nästa" class="modal-nav">›</button>
+            </div>
+
+            <div class="modal-thumbs" id="modalThumbs"></div>
+
+            <div class="modal-text">
+                <p>
+                    <strong>GreenQuest</strong> is a web project developed during the first-year
+                    <em>Project Course in Media Technology</em> at Linnaeus University. The goal is to help golfers
+                    discover and plan golf trips across the Småland and Öland regions.
+                </p>
+                <p>
+                    The system integrates APIs for weather, routing and golf club data (Leaflet, OpenRouteService,
+                    SMAPI).
+                    The focus was on an intuitive user experience, clear information structure and visual balance.
+                </p>
+                <ul>
+                    <li>Weather integration (OpenWeather API)</li>
+                    <li>Interactive map (Leaflet.js)</li>
+                    <li>Favorites and route planning features</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>

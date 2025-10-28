@@ -1,21 +1,18 @@
 // ===== Config =====
-const NAV_OFFSET = 80; // Justera om din fixed nav är högre
+const NAV_OFFSET = 80;
 
 // ===== Helpers =====
 const rafThrottle = (fn) => {
   let ticking = false;
   return (...args) => {
     if (!ticking) {
-      window.requestAnimationFrame(() => {
-        fn(...args);
-        ticking = false;
-      });
+      window.requestAnimationFrame(() => { fn(...args); ticking = false; });
       ticking = true;
     }
   };
 };
 
-// ===== Smooth scrolling (respekterar prefers-reduced-motion) =====
+// ===== Smooth scrolling =====
 document.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -27,17 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!target) return;
 
       e.preventDefault();
-      const offsetTop = target.offsetTop - NAV_OFFSET;
-
       window.scrollTo({
-        top: offsetTop,
+        top: target.offsetTop - NAV_OFFSET,
         behavior: reduceMotion ? 'auto' : 'smooth'
       });
     });
   });
 });
 
-// ===== Highlight aktiv sektion i navigation (throttlad) =====
+// ===== Active section highlight =====
 const highlightOnScroll = () => {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
@@ -46,36 +41,24 @@ const highlightOnScroll = () => {
   sections.forEach(section => {
     const top = section.offsetTop - (NAV_OFFSET + 20);
     const height = section.clientHeight;
-    if (scrollY >= top && scrollY < top + height) {
-      current = section.id;
-    }
+    if (scrollY >= top && scrollY < top + height) current = section.id;
   });
 
-  navLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
-  });
+  navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${current}`));
 };
-
-
 window.addEventListener('scroll', rafThrottle(highlightOnScroll));
 window.addEventListener('load', highlightOnScroll);
 
-// ===== Scroll animationer via IntersectionObserver =====
-const observerOptions = {
-  threshold: 0.15,
-  rootMargin: '0px 0px -50px 0px'
-};
-
+// ===== Scroll-in animations =====
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('animate-in');
-      observer.unobserve(entry.target); // sluta observera när animerad
+      observer.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-// Registrera allt som ska animeras
 document.addEventListener('DOMContentLoaded', () => {
   const observeList = (selector, delayStep = 0) => {
     document.querySelectorAll(selector).forEach((el, i) => {
@@ -84,67 +67,63 @@ document.addEventListener('DOMContentLoaded', () => {
       observer.observe(el);
     });
   };
-
   observeList('h2');
   observeList('.skill-card', 0.1);
   observeList('.project-card', 0.15);
   observeList('.about-text', 0.2);
   observeList('.contact-item', 0.1);
+});
 
-  // --- Bildkällor per projekt ---
-const SLIDES = {
-  greenquest: [
-    'bilder/greenquest1.jpg',
-    'bilder/greenquest2.jpg',
-    'bilder/greenquest3.jpg',
-    'bilder/greenquest4.jpg'
-  ]
-};
+// ===== Modal gallery (GreenQuest) =====
+const modal = document.getElementById('project-modal');
+const modalImg = document.getElementById('modalImg');
+const thumbs = document.getElementById('modalThumbs');
+const nextBtn = document.getElementById('nextImg');
+const prevBtn = document.getElementById('prevImg');
 
-// --- Initiera alla sliders ---
-document.querySelectorAll('[data-slider]').forEach(setupSlider);
+const IMAGES = [
+  'bilder/greenquest1.jpg',
+  'bilder/greenquest2.jpg',
+  'bilder/greenquest3.jpg',
+  'bilder/greenquest4.jpg'
+];
+let current = 0;
 
-function setupSlider(sliderEl){
-  const key = sliderEl.getAttribute('data-slider');
-  const imgs = SLIDES[key] || [];
-  const imgEl = sliderEl.querySelector('.slider-img');
-  const prevBtn = sliderEl.querySelector('.prev');
-  const nextBtn = sliderEl.querySelector('.next');
-  const dotsEl = sliderEl.querySelector('.slider-dots');
-
-  if (!imgs.length) return;
-
-  let i = 0;
-  render();
-
-  // knappar
-  prevBtn.addEventListener('click', e => { e.stopPropagation(); i = (i - 1 + imgs.length) % imgs.length; render(); });
-  nextBtn.addEventListener('click', e => { e.stopPropagation(); i = (i + 1) % imgs.length; render(); });
-
-  // autoplay (pausas vid hover)
-  let timer = setInterval(next, 3500);
-  sliderEl.addEventListener('mouseenter', () => clearInterval(timer));
-  sliderEl.addEventListener('mouseleave', () => timer = setInterval(next, 3500));
-
-  function next(){ i = (i + 1) % imgs.length; render(); }
-
-  function render(){
-    imgEl.src = imgs[i];
-    // dots
-    dotsEl.innerHTML = '';
-    imgs.forEach((_, idx) => {
-      const b = document.createElement('button');
-      if (idx === i) b.classList.add('active');
-      b.addEventListener('click', e => { e.stopPropagation(); i = idx; render(); });
-      dotsEl.appendChild(b);
-    });
-  }
+function openModal() {
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('body-lock');
+  renderModal();
+}
+function closeModal() {
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('body-lock');
+}
+function renderModal() {
+  modalImg.src = IMAGES[current];
+  thumbs.innerHTML = '';
+  IMAGES.forEach((src, i) => {
+    const t = new Image();
+    t.src = src;
+    if (i === current) t.classList.add('active');
+    t.addEventListener('click', () => { current = i; renderModal(); });
+    thumbs.appendChild(t);
+  });
 }
 
+nextBtn.addEventListener('click', () => { current = (current + 1) % IMAGES.length; renderModal(); });
+prevBtn.addEventListener('click', () => { current = (current - 1 + IMAGES.length) % IMAGES.length; renderModal(); });
 
-  const contactContent = document.querySelector('.contact-content');
-  if (contactContent) {
-    contactContent.classList.add('scroll-animation');
-    observer.observe(contactContent);
-  }
+// Öppna modalen när man klickar var som helst på GreenQuest-kortet
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('[data-project="greenquest"]');
+  if (card) { e.preventDefault(); openModal(); }
+});
+
+// Stängning (bakgrund, X, Esc + piltangenter)
+document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+window.addEventListener('keydown', (e) => {
+  if (modal.getAttribute('aria-hidden') === 'true') return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowRight') nextBtn.click();
+  if (e.key === 'ArrowLeft') prevBtn.click();
 });
