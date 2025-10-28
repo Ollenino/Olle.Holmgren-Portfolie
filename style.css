@@ -480,6 +480,19 @@ footer {
   color: #666;
 }
 
+.modal-link a {
+  color: #8eff8e;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.modal-link a:hover {
+  color: #b3ffb3;
+  border-color: #b3ffb3;
+}
+
 /* Scroll-in animations */
 .scroll-animation {
   opacity: 0;
