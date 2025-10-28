@@ -74,56 +74,107 @@ document.addEventListener('DOMContentLoaded', () => {
   observeList('.contact-item', 0.1);
 });
 
-// ===== Modal gallery (GreenQuest) =====
-const modal = document.getElementById('project-modal');
-const modalImg = document.getElementById('modalImg');
-const thumbs = document.getElementById('modalThumbs');
-const nextBtn = document.getElementById('nextImg');
-const prevBtn = document.getElementById('prevImg');
+// ===== Modal galleries (multi-project) =====
+// 1) Peka ut var varje modals element finns (unika IDs)
+const MODALS = {
+  greenquest: {
+    modal:  '#project-modal',
+    img:    '#modalImg',
+    thumbs: '#modalThumbs',
+    next:   '#nextImg',
+    prev:   '#prevImg',
+    opener: '[data-project="greenquest"]'
+  },
+  studentquiz: {
+    modal:  '#project-modal-studentquiz',
+    img:    '#modalImg-studentquiz',
+    thumbs: '#modalThumbs-studentquiz',
+    next:   '#nextImg-studentquiz',
+    prev:   '#prevImg-studentquiz',
+    opener: '[data-project="studentquiz"]'
+  }
+};
 
-const IMAGES = [
-  'bilder/greenquest1.jpg',
-  'bilder/greenquest2.jpg',
-  'bilder/greenquest3.jpg',
-  'bilder/greenquest4.jpg'
-];
-let current = 0;
+// 2) Bildlistor per projekt
+const GALLERIES = {
+  greenquest: [
+    'bilder/greenquest1.jpg',
+    'bilder/greenquest2.jpg',
+    'bilder/greenquest3.jpg',
+    'bilder/greenquest4.jpg'
+  ],
+  studentquiz: [
+    'bilder/Quiz1.png',
+    'bilder/quiz2.png',
+    'bilder/quiz3.png',
+    'bilder/quiz4.png',
+  ]
+};
 
-function openModal() {
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('body-lock');
-  renderModal();
-}
-function closeModal() {
-  modal.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('body-lock');
-}
-function renderModal() {
-  modalImg.src = IMAGES[current];
-  thumbs.innerHTML = '';
-  IMAGES.forEach((src, i) => {
-    const t = new Image();
-    t.src = src;
-    if (i === current) t.classList.add('active');
-    t.addEventListener('click', () => { current = i; renderModal(); });
-    thumbs.appendChild(t);
+// 3) Initiera en modal med all logik (öppna, stäng, rendera, pilar, thumbs, tangentbord)
+function initModal(key){
+  const cfg = MODALS[key];
+  const modalEl  = document.querySelector(cfg.modal);
+  const imgEl    = document.querySelector(cfg.img);
+  const thumbsEl = document.querySelector(cfg.thumbs);
+  const nextBtn  = document.querySelector(cfg.next);
+  const prevBtn  = document.querySelector(cfg.prev);
+  const list     = GALLERIES[key] || [];
+
+  if (!modalEl || !imgEl || !thumbsEl || !list.length) return;
+
+  let idx = 0;
+
+  function render(){
+    imgEl.src = list[idx];
+    thumbsEl.innerHTML = '';
+    list.forEach((src, i) => {
+      const t = new Image();
+      t.src = src;
+      if (i === idx) t.classList.add('active');
+      t.addEventListener('click', () => { idx = i; render(); });
+      thumbsEl.appendChild(t);
+    });
+  }
+
+  function open(){
+    idx = 0;
+    modalEl.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('body-lock');
+    render();
+  }
+
+  function close(){
+    modalEl.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('body-lock');
+  }
+
+  // Öppna när man klickar på rätt projektkort
+  document.addEventListener('click', (e) => {
+    if (e.target.closest(cfg.opener)) {
+      e.preventDefault();
+      open();
+    }
+    if (e.target.matches(`${cfg.modal} [data-close], ${cfg.modal} .modal-backdrop`)) {
+      close();
+    }
   });
+
+  // Piltangenter + Esc när modalen är aktiv
+  window.addEventListener('keydown', (e) => {
+    if (modalEl.getAttribute('aria-hidden') === 'true') return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') nextBtn?.click();
+    if (e.key === 'ArrowLeft')  prevBtn?.click();
+  });
+
+  // Nästa/föregående
+  nextBtn?.addEventListener('click', () => { idx = (idx + 1) % list.length; render(); });
+  prevBtn?.addEventListener('click', () => { idx = (idx - 1 + list.length) % list.length; render(); });
 }
 
-nextBtn.addEventListener('click', () => { current = (current + 1) % IMAGES.length; renderModal(); });
-prevBtn.addEventListener('click', () => { current = (current - 1 + IMAGES.length) % IMAGES.length; renderModal(); });
+// 4) Starta båda modalerna
+initModal('greenquest');
+initModal('studentquiz');
 
-// Öppna modalen när man klickar var som helst på GreenQuest-kortet
-document.addEventListener('click', (e) => {
-  const card = e.target.closest('[data-project="greenquest"]');
-  if (card) { e.preventDefault(); openModal(); }
-});
 
-// Stängning (bakgrund, X, Esc + piltangenter)
-document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
-window.addEventListener('keydown', (e) => {
-  if (modal.getAttribute('aria-hidden') === 'true') return;
-  if (e.key === 'Escape') closeModal();
-  if (e.key === 'ArrowRight') nextBtn.click();
-  if (e.key === 'ArrowLeft') prevBtn.click();
-});

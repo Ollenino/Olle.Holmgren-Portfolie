@@ -505,6 +505,20 @@ footer {
   transform: translateY(0);
 }
 
+#prevImg-studentquiz {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#nextImg-studentquiz {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   h1 {

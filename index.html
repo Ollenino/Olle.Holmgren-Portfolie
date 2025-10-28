@@ -109,17 +109,24 @@
             </div>
 
             <!-- Projekt 2 -->
-            <div class="project-card">
-                <div class="project-image">Projektbild 2</div>
-                <div class="project-content">
-                    <h3>Projekt 2 - Titel</h3>
-                    <p>Beskriv</p>
-                    <div class="project-tags">
-                        <span class="tag">Teknologi 1</span>
-                        <span class="tag">Teknologi 2</span>
-                    </div>
-                </div>
-            </div>
+            <!-- Client project: Onboarding quiz for new students -->
+<div class="project-card" data-project="studentquiz">
+  <!-- Byt filnamnet nedan till din bannerbild -->
+  <div class="project-image" style="background-image:url('bilder/linnebanner.png');"></div>
+  <div class="project-content">
+    <h3>New Student Onboarding Quiz</h3>
+    <p>
+      Client assignment: a group project creating a fun, engaging quiz that helps non-students discover which university program best matches their personality.
+    </p>
+    <div class="project-tags">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Figma</span>
+    </div>
+  </div>
+</div>
+
 
             <!-- Projekt 3 -->
             <div class="project-card">
@@ -238,6 +245,55 @@
             </div>
         </div>
     </div>
+     <!--Linnequiz popup-->
+     <div id="project-modal-studentquiz" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-dialog">
+    <button class="modal-close" aria-label="Close" data-close>&times;</button>
+
+    <div class="modal-header">
+      <h2>Student Quiz</h2>
+      <p class="modal-subtitle">Interactive client project for new students</p>
+    </div>
+
+    <div class="modal-gallery">
+      <button id="prevImg-studentquiz" aria-label="Previous" class="modal-nav">‹</button>
+      <img id="modalImg-studentquiz" src="bilder/studentquiz1.jpg" alt="Student Quiz image" />
+      <button id="nextImg-studentquiz" aria-label="Next" class="modal-nav">›</button>
+    </div>
+
+    <div class="modal-thumbs" id="modalThumbs-studentquiz"></div>
+
+    <div class="modal-text">
+  <p>
+    <strong>Student Quiz</strong> is a group project developed as a client assignment for 
+    <em>Linnaeus University</em>. The goal was to create an interactive quiz aimed at helping 
+    young people who are considering higher education but are unsure about what to study.
+  </p>
+  <p>
+    The quiz guides users through a series of personality-based questions, and based on their 
+    answers, suggests three educational programs that best match their interests and strengths.
+  </p>
+  <p>
+    The design and development focused on user engagement, clear visual feedback, and aligning 
+    with the university’s official graphic profile to create a fun and trustworthy experience.
+  </p>
+
+  <p class="modal-link">
+     <a href="https://jolly-lolly-145e0e.netlify.app/" target="_blank" rel="noopener">
+      Visit the Student Quiz website
+    </a>
+  </p>
+
+  <ul>
+    <li>Personality-based quiz for study guidance</li>
+    <li>Design inspired by Linnaeus University’s brand manual</li>
+    <li>Developed collaboratively in a multidisciplinary student team</li>
+    <li>Built using HTML, CSS and JavaScript</li>
+  </ul>
+</div>
+  </div>
+</div>
 
     <script src="script.js"></script>
 </body>
