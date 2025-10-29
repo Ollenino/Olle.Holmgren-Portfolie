@@ -434,6 +434,7 @@ h2::after {
   gap: 3rem;
   margin-top: 3rem;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .contact-item {
@@ -441,6 +442,7 @@ h2::after {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  min-width: 120px;
 }
 
 .contact-item a {
@@ -455,21 +457,45 @@ h2::after {
 }
 
 .icon {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #fff;
-  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
 }
 
 .github img,
 .linkedin img {
   width: 50px;
   height: 50px;
+  filter: brightness(0) invert(1); /* gör dem vita */
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
+/* ==== Kontaktikoner (mail & telefon) ==== */
+.icon img {
+  width: 50px;
+  height: 50px;
+  filter: brightness(0) invert(1); /* gör dem vita om de är svarta SVG:er */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.github img:hover,
+.linkedin img:hover,
+.icon img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* Se till att alla kontaktikoner har samma stil */
+.linkedin img,
+.github img,
+.icon img {
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
 
 /* Footer */
 footer {
