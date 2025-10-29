@@ -11,6 +11,23 @@ body {
   line-height: 1.6;
 }
 
+html, body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #141414 100%);
+  color: #fff;
+  line-height: 1.6;
+  min-height: 100%;
+}
+
+:root {
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+}
+body {
+  padding-top: max(var(--safe-top), 0px);
+  padding-bottom: max(var(--safe-bottom), 0px);
+}
+
+
 /* Nav */
 nav {
   position: fixed;
