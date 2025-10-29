@@ -112,7 +112,7 @@
             <!-- Client project: Onboarding quiz for new students -->
 <div class="project-card" data-project="studentquiz">
   <!-- Byt filnamnet nedan till din bannerbild -->
-  <div class="project-image" style="background-image:url('bilder/linnebanner.png');"></div>
+  <div class="project-image" style="background-image:url('Bilder/linnebanner.png');"></div>
   <div class="project-content">
     <h3>New Student Onboarding Quiz</h3>
     <p>
@@ -129,44 +129,29 @@
 
 
             <!-- Projekt 3 -->
-            <div class="project-card">
-                <div class="project-image">Projektbild 3</div>
-                <div class="project-content">
-                    <h3>Projekt 3 - Titel</h3>
-                    <p>Beskriv</p>
-                    <div class="project-tags">
-                        <span class="tag">Teknologi 1</span>
-                        <span class="tag">Teknologi 2</span>
-                    </div>
-                </div>
-            </div>
+            <div class="project-card" data-project="transit">
+  <!-- Byt filnamnet nedan till din bannerbild -->
+  <div class="project-image" style="background-image:url('Bilder/transitbanner.png');"></div>
+  <div class="project-content">
+    <h3>Public Transport Screen</h3>
+    <p>
+      A public-display concept for transit hubs showing live bus times, weather, a playable mini-game with leaderboard,
+      and nearby attractions with distance.
+    </p>
+    <div class="project-tags">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Figma</span>
+    </div>
+  </div>
+</div>
 
             <!-- Projekt 4 -->
-            <div class="project-card">
-                <div class="project-image">Projektbild 4</div>
-                <div class="project-content">
-                    <h3>Projekt 4 - Titel</h3>
-                    <p>Beskriv</p>
-                    <div class="project-tags">
-                        <span class="tag">Teknologi 1</span>
-                        <span class="tag">Teknologi 2</span>
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- Projekt 5 -->
-            <div class="project-card">
-                <div class="project-image">Projektbild 5</div>
-                <div class="project-content">
-                    <h3>Projekt 5 - Titel</h3>
-                    <p>Beskriv</p>
-                    <div class="project-tags">
-                        <span class="tag">Teknologi 1</span>
-                        <span class="tag">Teknologi 2</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+            
     </section>
 
     <!-- Contact -->
@@ -294,6 +279,40 @@
 </div>
   </div>
 </div>
+  <!-- Transit popup -->
+<div id="project-modal-transit" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-dialog">
+    <button class="modal-close" aria-label="Close" data-close>&times;</button>
+
+    <div class="modal-header">
+      <h2>Public Transport Screen</h2>
+      <p class="modal-subtitle">Real-time info, game & local highlights</p>
+    </div>
+
+    <div class="modal-gallery">
+      <button id="prevImg-transit" aria-label="Previous" class="modal-nav">‹</button>
+      <img id="modalImg-transit" src="bilder/transit1.jpg" alt="Transit screen image" />
+      <button id="nextImg-transit" aria-label="Next" class="modal-nav">›</button>
+    </div>
+
+    <div class="modal-thumbs" id="modalThumbs-transit"></div>
+
+    <div class="modal-text">
+      <p>
+        This public display prototype is designed for bus/train waiting areas. It shows live departures, current weather,
+        a quick game with a leaderboard, and curated nearby points of interest with walking distance.
+      </p>
+      <ul>
+        <li>Live bus times</li>
+        <li>Weather overview</li>
+        <li>Mini-game + leaderboard</li>
+        <li>Nearby attractions with distance</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 
     <script src="script.js"></script>
 </body>

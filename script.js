@@ -92,6 +92,14 @@ const MODALS = {
     next:   '#nextImg-studentquiz',
     prev:   '#prevImg-studentquiz',
     opener: '[data-project="studentquiz"]'
+  },
+  transit: {
+    modal:  '#project-modal-transit',
+    img:    '#modalImg-transit',
+    thumbs: '#modalThumbs-transit',
+    next:   '#nextImg-transit',
+    prev:   '#prevImg-transit',
+    opener: '[data-project="transit"]'
   }
 };
 
@@ -101,14 +109,18 @@ const GALLERIES = {
     'bilder/greenquest1.jpg',
     'bilder/greenquest2.jpg',
     'bilder/greenquest3.jpg',
-    'bilder/greenquest4.jpg'
+    'bilder/greenquest4.jpg',
   ],
   studentquiz: [
     'bilder/Quiz1.png',
     'bilder/quiz2.png',
     'bilder/quiz3.png',
     'bilder/quiz4.png',
-  ]
+  ],
+  transit: [
+    'bilder/transit.png',
+    'bilder/transit1.png',
+  ],
 };
 
 // 3) Initiera en modal med all logik (öppna, stäng, rendera, pilar, thumbs, tangentbord)
@@ -176,5 +188,6 @@ function initModal(key){
 // 4) Starta båda modalerna
 initModal('greenquest');
 initModal('studentquiz');
+initModal('transit');
 
 

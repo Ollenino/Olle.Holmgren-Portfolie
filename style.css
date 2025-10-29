@@ -519,6 +519,20 @@ footer {
   transform: translateY(-50%);
 }
 
+#prevImg-transit {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#nextImg-transit {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   h1 {
