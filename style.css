@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Urbanist', sans-serif;
-  background: #0a0a0a;
+  background: linear-gradient(135deg, #0a0a0a 0%, #141414 100%);
   color: #fff;
   line-height: 1.6;
 }
